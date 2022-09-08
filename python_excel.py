@@ -11,13 +11,11 @@ def excel_create(filename: str, data: List[Dict]) -> None:
     worksheet = workbook.add_worksheet()
 
     for col, name in enumerate(data[0].keys()):
-        print(col, name)
         worksheet.write(0, col, name)
 
     for row, item in enumerate(data, start=1):
         items_dict = item.values()
-        for value, col in zip(items_dict, range(len(items_dict))):
-            print(row, col, value)
+        for col, value in enumerate(items_dict):
             worksheet.write(row, col, value)
 
     workbook.close()
